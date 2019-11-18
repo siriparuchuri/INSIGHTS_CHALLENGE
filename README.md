@@ -10,6 +10,3 @@ Steps to run the program:
 Output file named report.csv is writted to the ouput  folder
 
 Tests have been included in the test suite. This suite covers 3 scenarios including most of the border and general cases
-
-Code has exclusive inline comments and its self explanatory.
-
