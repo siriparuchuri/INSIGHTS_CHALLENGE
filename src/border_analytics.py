@@ -4,10 +4,10 @@ from collections import OrderedDict
 from datetime import datetime
 
 
-class Borderanalytics:
+class BorderAnalytics:
     report = dict()
 
-    def sumitems(self):
+    def sum(self):
        
        
         for timestamp, border_measures in self.report.items():
@@ -16,7 +16,7 @@ class Borderanalytics:
                 for item in attributes['val_list']:
                     attributes['sum'] += int(item)
 
-    def computeaverage(self):
+    def average(self):
        
         self.report = OrderedDict(sorted(self.report.items(), key=lambda x: x[0], reverse=True))
         date_lists = list(self.report.keys())[::-1]
@@ -35,7 +35,7 @@ class Borderanalytics:
                     running_total[border_measure][0] += attributes['sum']
                     running_total[border_measure][1] += 1
 
-    def sortitems(self):
+    def sort(self):
         
         
         for timestamp, border_measures in self.report.items():
@@ -45,7 +45,7 @@ class Borderanalytics:
                                               )
             self.report[timestamp] = new_border_measures
 
-    def writetofile(self):
+    def writeto(self):
         
         
         file_out = open('../output/report.csv', 'w')
@@ -79,11 +79,11 @@ class Borderanalytics:
                 counter += 1
                 if counter % 100000 == 0:
                     print(counter)
-        self.sumitems()
-        self.computeaverage()
-        self.sortitems()
-        self.writetofile()
+        self.sum()
+        self.average()
+        self.sort()
+        self.writeto()
 
 
-analysis = Borderanalytics()
+analysis = BorderAnalytics()
 analysis.driver()
